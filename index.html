@@ -45,19 +45,6 @@
     button:hover {
       opacity: 0.9;
     }
-    .footer {
-      margin-top: 30px;
-      font-size: 14px;
-      color: #ccc;
-    }
-    .team-strip {
-      background-color: #000;
-      padding: 30px 10px;
-      text-align: center;
-      color: #fff;
-      font-size: 16px;
-      width: 100%;
-    }
     @media screen and (max-width: 640px) {
       .container {
         margin: 20px;
@@ -118,7 +105,6 @@
     </div>
   </div>
 
-
   <script>
     function showExamOptions() {
       document.getElementById("examDiv").style.display = "block";
@@ -142,29 +128,29 @@
       document.getElementById("downloadDiv").style.display = "block";
     }
 
-    function downloadFile() {
-    const subject = document.getElementById("subject").value;
-    const year = document.getElementById("year").value;
+   function downloadFile() {
+  const branch = document.getElementById("branch").value;
+  const exam = document.getElementById("exam").value;
+  const subject = document.getElementById("subject").value;
+  const year = document.getElementById("year").value;
 
-    if (!subject || !year) {
-      alert("Please select both subject and year.");
-      return;
-    }
-
-    const fileName = `${subject}-${year}.pdf`;
-    const link = document.createElement('a');
-
-    // Since the file is in the same folder as index.html
-    link.href = fileName;
-    link.download = fileName;
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  if (!branch || !exam || !subject || !year) {
+    alert("Please select all options (Branch, Exam, Subject, Year)");
+    return;
   }
 
-  </script>
- 
-</body>
+  const filename = `${subject}-${year}.pdf`;
 
+  // 👉 FIX: Add your GitHub Pages repo name here
+  const fileUrl = `/btech-pyqs/${filename}`;
+
+  const link = document.createElement('a');
+  link.href = fileUrl;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+  </script>
+</body>
 </html>
