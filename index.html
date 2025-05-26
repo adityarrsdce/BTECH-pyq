@@ -142,19 +142,27 @@
       document.getElementById("downloadDiv").style.display = "block";
     }
 
-    function downloadFile() {
-      // Ad simulation: open ad in new tab
-      window.open("https://example.com/ad", "_blank");
+   function downloadFile() {
+  const subject = document.getElementById("subject").value;
+  const year = document.getElementById("year").value;
 
-      // Actual download (example link)
-      const link = document.createElement('a');
-      link.href = "files/sample.pdf"; // Update dynamically if needed
-      link.download = "PYQ.pdf";
-      link.click();
-    }
+  if (!subject || !year) {
+    alert("Please select subject and year");
+    return;
+  }
+
+  const filename = `${subject}-${year}.pdf`;
+  const fileUrl = `https://github.com/adityarrsdce/beu-pyq/raw/main/${filename}`;
+
+  const link = document.createElement('a');
+  link.href = fileUrl;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
   </script>
-   
-  
  
 </body>
 
