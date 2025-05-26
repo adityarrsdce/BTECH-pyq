@@ -142,25 +142,26 @@
       document.getElementById("downloadDiv").style.display = "block";
     }
 
-   function downloadFile() {
-  const subject = document.getElementById("subject").value;
-  const year = document.getElementById("year").value;
+    function downloadFile() {
+    const subject = document.getElementById("subject").value;
+    const year = document.getElementById("year").value;
 
-  if (!subject || !year) {
-    alert("Please select subject and year");
-    return;
+    if (!subject || !year) {
+      alert("Please select both subject and year.");
+      return;
+    }
+
+    const fileName = `${subject}-${year}.pdf`;
+    const link = document.createElement('a');
+
+    // Since the file is in the same folder as index.html
+    link.href = fileName;
+    link.download = fileName;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
-
-  const filename = `${subject}-${year}.pdf`;
-  const fileUrl = `https://github.com/adityarrsdce/beu-pyq/raw/main/${filename}`;
-
-  const link = document.createElement('a');
-  link.href = fileUrl;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
 
   </script>
  
